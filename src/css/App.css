@@ -1,0 +1,25 @@
+/*home-page*/
+
+.navbar {
+  margin-bottom: 50px;
+  background-color: #353535;
+  border-radius: 0;
+}
+
+footer {
+  margin-top: 50px;
+  background-color: #353535;
+  color: #ffffff;
+  padding: 5px;
+}
+
+/*End*/
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

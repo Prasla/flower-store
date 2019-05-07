@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
+import AppHeader from './ui-components/AppHeader';
+import AppFooter from './ui-components/AppFooter';
+import Cart from './Cart'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+	
+	constructor(props) {
+		super(props);
+		
+		console.log("test");
+		
+		this.state = {
+			cart: false
+		}
+		
+		this.handleChange = this.handleChange.bind(this);
+	}
+	
+	handleChange (val) {
+		this.setState({
+			cart: val
+		});
+	}
+	
+
+	render() {
+		
+		var activeView = '';
+		
+		if(this.state.cart) {
+			activeView = <Cart />;
+		} else {
+			activeView = <h2 className="text-center"> Go to the cart that have pre existing items to checkout. </h2>;
+		}
+		
+		return (
+			<div>
+				<AppHeader cart={this.state.cart} onViewChange = {this.handleChange}></AppHeader>
+					<div className="container"> 
+						{activeView}
+					</div>
+				<AppFooter></AppFooter>
+			</div>
+		);
+	}
 }
+
 
 export default App;
